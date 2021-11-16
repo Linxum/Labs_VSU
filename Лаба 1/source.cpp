@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <Windows.h>
 
@@ -9,7 +10,7 @@ int main()
 	SetConsoleOutputCP(1251);
 	double x1, x2, x3, y1, y2, y3;
 	double AB, BC, AC;
-	cout << "Ââåäè êîîðäèíàòû òðåóãîëüíèêà\nx1)";
+	cout << "Введи координаты треугольника\nx1)";
 	cin >> x1;
 	cout << "y1)";
 	cin >> y1;
@@ -30,50 +31,11 @@ int main()
 	ha = (2 * sq) / AB;
 	hb = (2 * sq) / BC;
 	hc = (2 * sq) / AC;
-	double b = max(AB, BC);
-	double c = max(b, AC);
-	if (c == AB)
-	{
-		if (pow(c, 2) > (pow(BC, 2) + pow(AC, 2)))
-		{
-			cout << ha << "\n";
-			cout << hb << "\n";
-			cout << hc << "\n";
-		}
-		else
-		{
-
-			cout << "-";
-		}
-	}
-	else if (c == BC)
-	{
-		if (pow(c, 2) > (pow(AB, 2) + pow(AC, 2)))
-		{
-			cout << ha << "\n";
-			cout << hb << "\n";
-			cout << hc << "\n";
-		}
-		else
-		{
-
-			cout << "-";
-		}
-	}
-	else if (c == AC)
-	{
-		if (pow(c, 2) > (pow(BC, 2) + pow(AB, 2)))
-		{
-			cout << ha << "\n";
-			cout << hb << "\n";
-			cout << hc << "\n";
-		}
-		else
-		{
-
-			cout << "-";
-		}
-	}
+	const int len = 3;
+	double array[len] = { ha, hb, hc };
+	sort(array, array + len);
+	for (int i = 0; i < len; ++i)
+		std::cout << array[i] << ' ';
 	//cout << ha << "\n";
 	//cout << hb << "\n";
 	//cout << hc << "\n";
